@@ -36,6 +36,7 @@ default_sim_settings = {
     "depth_sensor": True,  # depth sensor
     "semantic_sensor": True,  # semantic sensor
     "scene": "../../vehicle_simulator/mesh/matterport/segmentations/matterport.glb",
+    "scene_dataset_config_file": "../../vehicle_simulator/mesh/matterport/mp3d_scene_dataset_config.json",
 }
 
 parser = argparse.ArgumentParser()
@@ -59,6 +60,7 @@ def make_cfg(settings):
             "Error: Please upgrade habitat-sim. SimulatorConfig API version mismatch"
         )
     sim_cfg.scene_id = settings["scene"]
+    sim_cfg.scene_dataset_config_file = settings["scene_dataset_config_file"]
 
     sensor_specs = []
     def create_camera_spec(**kw_args):
